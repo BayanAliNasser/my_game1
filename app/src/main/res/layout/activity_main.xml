@@ -15,12 +15,12 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="48sp"
-        android:text="do not miss the ball !"
-        android:textColor="#ffffffff"
         android:layout_above="@id/play"
         android:layout_below="@id/highScoreTxt"
-       android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:text="do not miss the ball !"
+        android:textColor="#ffffffff"
+        android:textSize="48sp" />
 
     <TextView
         android:layout_width="wrap_content"
