@@ -8,9 +8,10 @@ import android.graphics.BlurMaskFilter;
 public class Background {
     int x = 0 ,y = 0  ;
     Bitmap background ;
+
     Background (int screenX , int screenY , Resources res){
 
-        background = BitmapFactory.decodeResource(res,R.drawable.baseballBackground);
+        background = BitmapFactory.decodeResource(res,R.drawable.bbbg);
         background = Bitmap.createScaledBitmap(background,screenX,screenY,false);
 
 

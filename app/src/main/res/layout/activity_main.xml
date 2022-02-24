@@ -9,7 +9,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/baseballBackground"
+        android:src="@drawable/bbbg"
         android:scaleType="centerCrop"/>
 
     <TextView
@@ -47,7 +47,7 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
         android:id="@+id/volumeCtrl"
-        android:src="@drawable/ic_baseline_volume_up_24"
+        android:src="@drawable/ic_baseline_volume_up_24"/>
 
 
 </RelativeLayout>
