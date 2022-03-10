@@ -45,10 +45,12 @@ public class GameView extends SurfaceView implements Runnable {
             sleep();
         }
     }
-    float theta=0 , deltatheta=30 , ox=50*screenRatioX , oy=50*screenRatioY ;
-    float calcx , calcy ,r=45*screenRatioY ;
-    float y0 = 50 * screenRatioY ,  x0 = (100*screenRatioX-2*r)/2 + 2*r ;
+
     private void update (){
+
+        double theta=0 , deltatheta=30 , ox=50*screenRatioX , oy=50*screenRatioY ;
+        double calcx , calcy ,r=45*screenRatioY ;
+        double y0 = 50 * screenRatioY ,  x0 = (100*screenRatioX-2*r)/2 + 2*r ;
         background1.x -= 10 * screenRatioX ;
         background2.x -= 10 * screenRatioX;
 
@@ -60,7 +62,7 @@ public class GameView extends SurfaceView implements Runnable {
         }
 
         if (spin.isGoingLeft){
-        }
+
             theta+= deltatheta ;
             if (theta>= 360)
                 theta -=360 ;
@@ -78,7 +80,7 @@ public class GameView extends SurfaceView implements Runnable {
             if (theta <= 0)
                 theta += 360;
             calcx = x0 + r * Math.cos(Math.toRadians(theta));
-            calcy = y0 + r * Math.sin(Math.toRadians(theta))
+            calcy = y0 + r * Math.sin(Math.toRadians(theta));
             spin.x = ox + calcx;
             spin.y = oy - calcy;
             x0 = spin.x;
@@ -95,7 +97,7 @@ public class GameView extends SurfaceView implements Runnable {
             canvas.drawBitmap(background1.background,background1.x,background1.y,paint);
             canvas.drawBitmap(background2.background,background2.x,background2.y,paint);
 
-            canvas.drawBitmap(spin.getSpin(),spin.x,spin.y,paint);
+            canvas.drawBitmap(spin.getSpin(),(float)spin.x,(float)spin.y,paint);
 
             getHolder().unlockCanvasAndPost(canvas);
         }
@@ -128,8 +130,9 @@ public class GameView extends SurfaceView implements Runnable {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        return true ;
-        switch (event.getAction()){
+        return true ; // TODO: check
+        switch (event.getAction())
+        {
             case MotionEvent.ACTION_DOWN:
                 if (event.getX()<screenX/2){
                     spin.isGoingLeft = true ;

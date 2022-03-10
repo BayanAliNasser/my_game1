@@ -12,7 +12,7 @@ public class Spin {
 
     boolean isGoingLeft=false  ;
     int width,height , hitcounter=0,theta=0,deltatheta=30;
-    float x,y,r=45*screenRatioY,ox=50*screenRatioX,oy=50*screenRatioY;
+    double x,y,r=45*screenRatioY,ox=50*screenRatioX,oy=50*screenRatioY;
 
 
     Bitmap bat1,bat2 , ball ;
