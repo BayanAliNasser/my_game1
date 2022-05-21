@@ -10,13 +10,18 @@ import android.graphics.BitmapFactory;
 public class Spin {
 
 
-    boolean isGoingLeft=false  ;
+    boolean isGoingLeft=false , isGoingRight=false  ;
     int width,height , hitcounter=0,theta=0,deltatheta=30;
     float x,y,r=45*screenRatioY,ox=50*screenRatioX,oy=50*screenRatioY;
+    Bitmap bat1 , bat2 , ball ;
+    private GameView gameView ;
 
 
-    Bitmap bat1,bat2 , ball ;
+
     Spin (int screenX , int screenY , Resources res) {
+
+        this.gameView = gameView ;
+
         bat1 = BitmapFactory.decodeResource(res , R.drawable.bat1);
         bat2 = BitmapFactory.decodeResource(res , R.drawable.bat2);
         ball = BitmapFactory.decodeResource(res , R.drawable.ball);
