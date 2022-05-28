@@ -45,10 +45,12 @@ public class GameView extends SurfaceView implements Runnable {
             sleep();
         }
     }
-    float theta=0 , deltatheta=30 , ox=50*screenRatioX , oy=50*screenRatioY ;
-    float calcx , calcy ,r=45*screenRatioY ;
-    float y0 = 50 * screenRatioY ,  x0 = (100*screenRatioX-2*r)/2 + 2*r ;
+
     private void update (){
+        float theta=0 , deltatheta=30 , ox=50*screenRatioX , oy=50*screenRatioY ;
+        float calcx , calcy ,r=45*screenRatioY ;
+        float y0 = 50 * screenRatioY ,  x0 = (100*screenRatioX-2*r)/2 + 2*r ;
+
         background1.x -= 10 * screenRatioX ;
         background2.x -= 10 * screenRatioX;
 
@@ -57,33 +59,59 @@ public class GameView extends SurfaceView implements Runnable {
         }
         if (background2.x + background2.background.getWidth() < 0){
             background2.x = screenX ;
+            if (spin.isGoingLeft){
+
+                theta+= deltatheta ;
+                if (theta>= 360)
+                    theta -=360 ;
+                calcx = (float)(x0 + r * Math.cos(Math.toRadians(theta)));
+                calcy = (float )(y0 + r * Math.sin(Math.toRadians(theta)));
+                spin.x = ox + calcx;
+                spin.y = oy - calcy;
+                x0 = spin.x ;
+                y0 = spin.y ;
+
+            }
+            else
+            {
+                theta -= deltatheta;
+                if (theta <= 0)
+                    theta += 360;
+                calcx =(float) (x0 + r * Math.cos(Math.toRadians(theta)));
+                calcy = (float)(y0 + r * Math.sin(Math.toRadians(theta)));
+                spin.x = ox + calcx;
+                spin.y = oy - calcy;
+                x0 = spin.x;
+                y0 = spin.y;
+            }
+        } else {
+            if (spin.isGoingLeft){
+
+                theta+= deltatheta ;
+                if (theta>= 360)
+                    theta -=360 ;
+                calcx = (float)(x0 + r * Math.cos(Math.toRadians(theta)));
+                calcy = (float )(y0 + r * Math.sin(Math.toRadians(theta)));
+                spin.x = ox + calcx;
+                spin.y = oy - calcy;
+                x0 = spin.x ;
+                y0 = spin.y ;
+
+            }
+            else
+            {
+                theta -= deltatheta;
+                if (theta <= 0)
+                    theta += 360;
+                calcx = (float)(x0 + r * Math.cos(Math.toRadians(theta)));
+                calcy = (float)(y0 + r * Math.sin(Math.toRadians(theta)));
+                spin.x = ox + calcx;
+                spin.y = oy - calcy;
+                x0 = spin.x;
+                y0 = spin.y;
+            }
         }
 
-        if (spin.isGoingLeft){
-        }
-            theta+= deltatheta ;
-            if (theta>= 360)
-                theta -=360 ;
-            calcx = x0 + r * Math.cos(Math.toRadians(theta));
-            calcy = y0 + r * Math.sin(Math.toRadians(theta));
-            spin.x = ox + calcx;
-            spin.y = oy - calcy;
-            x0 = spin.x ;
-            y0 = spin.y ;
-
-        }
-        else
-        {
-            theta -= deltatheta;
-            if (theta <= 0)
-                theta += 360;
-            calcx = x0 + r * Math.cos(Math.toRadians(theta));
-            calcy = y0 + r * Math.sin(Math.toRadians(theta))
-            spin.x = ox + calcx;
-            spin.y = oy - calcy;
-            x0 = spin.x;
-            y0 = spin.y;
-        }
     }
 
 
@@ -128,17 +156,27 @@ public class GameView extends SurfaceView implements Runnable {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        return true ;
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
                 if (event.getX()<screenX/2){
                     spin.isGoingLeft = true ;
                 }
+                else
+                {
+                    spin.isGoingLeft = false ;
+                }
                 break;
             case MotionEvent.ACTION_UP:
                 if (event.getX()>screenX/2){
-                    spin.isGoingLeft = false ;
+                    spin.isGoingRight = true;
+                }
+                else
+                {
+                    spin.isGoingRight = false ;
+                }
                 break;
+
         }
+        return true ;
     }
 }

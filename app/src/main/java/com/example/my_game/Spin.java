@@ -18,7 +18,7 @@ public class Spin {
 
 
 
-    Spin (int screenX , int screenY , Resources res) {
+    Spin ( GameView gameView , int screenX , int screenY , Resources res) {
 
         this.gameView = gameView ;
 
@@ -43,14 +43,16 @@ public class Spin {
 
 
     }
-Bitmap getSpin (){
+Bitmap getSpin () {
 
-        if (hitcounter==0){
-            hitcounter++;
-            return bat1 ;
-        }
-        hitcounter -- ;
-        return bat2 ;
+
+    if (hitcounter == 0) {
+        hitcounter++;
+        return bat1;
+    }
+    hitcounter--;
+    return bat2;
 }
 
-}
+
+
