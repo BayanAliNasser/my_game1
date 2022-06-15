@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">my_game</string>
+    <string name="do_not_miss_the_ball">do not miss the ball !</string>
+    <string name="play">play</string>
+    <string name="high_score">High Score</string>
+    <string name="todo">TODO</string>
 </resources>

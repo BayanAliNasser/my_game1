@@ -45,7 +45,6 @@ public class GameView extends SurfaceView implements Runnable {
             sleep();
         }
     }
-
     private void update (){
         float theta=0 , deltatheta=30 , ox=50*screenRatioX , oy=50*screenRatioY ;
         float calcx , calcy ,r=45*screenRatioY ;
@@ -57,60 +56,62 @@ public class GameView extends SurfaceView implements Runnable {
         if (background1.x + background1.background.getWidth() < 0){
             background1.x = screenX ;
         }
-        if (background2.x + background2.background.getWidth() < 0){
-            background2.x = screenX ;
-            if (spin.isGoingLeft){
-
-                theta+= deltatheta ;
-                if (theta>= 360)
-                    theta -=360 ;
-                calcx = (float)(x0 + r * Math.cos(Math.toRadians(theta)));
-                calcy = (float )(y0 + r * Math.sin(Math.toRadians(theta)));
-                spin.x = ox + calcx;
-                spin.y = oy - calcy;
-                x0 = spin.x ;
-                y0 = spin.y ;
-
-            }
-            else
-            {
-                theta -= deltatheta;
-                if (theta <= 0)
-                    theta += 360;
-                calcx =(float) (x0 + r * Math.cos(Math.toRadians(theta)));
-                calcy = (float)(y0 + r * Math.sin(Math.toRadians(theta)));
-                spin.x = ox + calcx;
-                spin.y = oy - calcy;
-                x0 = spin.x;
-                y0 = spin.y;
-            }
-        } else {
-            if (spin.isGoingLeft){
-
-                theta+= deltatheta ;
-                if (theta>= 360)
-                    theta -=360 ;
-                calcx = (float)(x0 + r * Math.cos(Math.toRadians(theta)));
-                calcy = (float )(y0 + r * Math.sin(Math.toRadians(theta)));
-                spin.x = ox + calcx;
-                spin.y = oy - calcy;
-                x0 = spin.x ;
-                y0 = spin.y ;
-
-            }
-            else
-            {
-                theta -= deltatheta;
-                if (theta <= 0)
-                    theta += 360;
-                calcx = (float)(x0 + r * Math.cos(Math.toRadians(theta)));
-                calcy = (float)(y0 + r * Math.sin(Math.toRadians(theta)));
-                spin.x = ox + calcx;
-                spin.y = oy - calcy;
-                x0 = spin.x;
-                y0 = spin.y;
-            }
+        if (background2.x + background2.background.getWidth() < 0)
+        {
+            background2.x = screenX;
         }
+        if (spin.isGoingLeft)
+        {
+            theta+= deltatheta ;
+            if (theta>= 360)
+                theta -=360 ;
+            calcx = (float)(x0 + r * Math.cos(Math.toRadians(theta)));
+            calcy = (float )(y0 + r * Math.sin(Math.toRadians(theta)));
+            spin.x = ox + calcx;
+            spin.y = oy - calcy;
+            x0 = spin.x ;
+            y0 = spin.y ;
+
+        }
+        else
+        {
+            theta -= deltatheta;
+            if (theta <= 0)
+                theta += 360;
+            calcx =(float) (x0 + r * Math.cos(Math.toRadians(theta)));
+            calcy = (float)(y0 + r * Math.sin(Math.toRadians(theta)));
+            spin.x = ox + calcx;
+            spin.y = oy - calcy;
+            x0 = spin.x;
+            y0 = spin.y;
+        }
+        if (spin.isGoingLeft)
+        {
+            theta += deltatheta;
+            if (theta >= 360)
+                theta -= 360;
+            calcx = (float) (x0 + r * Math.cos(Math.toRadians(theta)));
+            calcy = (float) (y0 + r * Math.sin(Math.toRadians(theta)));
+            spin.x = ox + calcx;
+            spin.y = oy - calcy;
+            x0 = spin.x;
+            y0 = spin.y;
+
+        }
+
+        else
+        {
+            theta -= deltatheta;
+            if (theta <= 0)
+                theta += 360;
+            calcx = (float)(x0 + r * Math.cos(Math.toRadians(theta)));
+            calcy = (float)(y0 + r * Math.sin(Math.toRadians(theta)));
+            spin.x = ox + calcx;
+            spin.y = oy - calcy;
+            x0 = spin.x;
+            y0 = spin.y;
+        }
+
 
     }
 
